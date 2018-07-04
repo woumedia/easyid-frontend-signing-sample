@@ -9,15 +9,23 @@
   </head>
   <body>
     <h2>EasyID signing demo</h2>
-    <p>You have two options for using signing with easyID:</p>
-    <ul>
-      <li>The signing result is returned to you through postMessage. This may be useful when the
-        signing occurs inside an iframe of your page.</li>
-      <li>The signing result is posted to a URL provided by you.</li>
-    </ul>
-    <p>This demo illustrates both approaches.</p>
+    <!--<p>You have two options for using signing with easyID:</p>-->
+    <!--<ul>-->
+      <!--<li>The signing result is returned to you through postMessage. This may be useful when the-->
+        <!--signing occurs inside an iframe of your page.</li>-->
+      <!--<li>The signing result is posted to a URL provided by you.</li>-->
+    <!--</ul>-->
+    <!--<p>This demo illustrates both approaches.</p>-->
+
+    <ol>
+      <li>Select "NO BankID hardware token"</li>
+      <li>Fødselsnummer: <code>15076400000</code></li>
+      <li>Engangskode: <code>otp</code></li>
+      <li>Personlig passord: <code>qwer1234</code></li>
+    </ol>
+
     <div>
-      <textarea id="signtext" placeholder="Enter the text you want to sign" cols="80" rows="8" onchange="enableButton()" onkeyup="enableButton()"></textarea>
+      <textarea id="signtext" placeholder="Enter the text you want to sign" cols="80" rows="8" onchange="enableButton()" onkeyup="enableButton()" style="display: none">I sign this contract, trololo</textarea>
     </div>
     <select  id="signmethod">
       <option value="urn:grn:authn:dk:nemid:poces">DK NemID personal</option>
@@ -28,7 +36,7 @@
       <option value="urn:grn:authn:se:bankid:same-device">SE BankID same device</option>
       <option value="urn:grn:authn:se:bankid:another-device">SE BankID another device</option>
     </select>
-    <button id="signbutton" onclick="signNow()" disabled>Sign the text</button>
+    <button id="signbutton" onclick="signNow()">Sign</button>
     </br></br>
     
     <iframe id="signhere" style="display:block" width="600px" height="500px" frameborder="0"></iframe>
@@ -63,7 +71,11 @@
             signMethod: selected.options[selected.selectedIndex].value,
             iframeID: "signhere"
         };
-    // Supply a callback function to have the result delivered right here in front end ...
+
+        document.getElementById("signmethod").style = "display: none;";
+        document.getElementById("signbutton").style = "display: none;";
+
+        // Supply a callback function to have the result delivered right here in front end ...
         easyID.sign(document.getElementById("signtext").value, options, function (err, response) {
             if (!err) {
               // This is where you process the signature result
