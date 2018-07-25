@@ -3,11 +3,14 @@ Shows how to do text signing right from the front-end. Please refer to the blog 
 
 *Please note* that in a production implementation, a backend is needed to do safe signature validation.
 
-## Test user
+## Test users
+
 You may try this sample with a Norwegian BankID test user.
  When asked, just use 
 **Fødselsnummer, Engangskode**, and **Personlig passord**  set to 
 **15076400000, otp, qwer1234**
+
+For `DK NemID personal` I successfully used `Thorgrim122` User from `NemID til Private (POCES)` section at https://www.nets.eu/developer/E-Signing/eIDs/Pages/testusers.aspx .
 
 ## Run the sample
 
