@@ -61,8 +61,10 @@
         document.getElementById("signbutton").disabled = document.getElementById("signtext").value.length <= 0;
       }
 
-      var domain = "acme-corp.grean.id";
-      var clientID = "urn:easyid:login-demo";
+      // var domain = "acme-corp.grean.id";
+      var domain = "contractbook.grean.id";
+      // var clientID = "urn:easyid:login-demo";
+      var clientID = "urn:easyid:3026";
       var easyID = new EasyID(domain, clientID);
 
       function signNow() {
